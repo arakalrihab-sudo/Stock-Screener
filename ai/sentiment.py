@@ -5,7 +5,7 @@ import sys
 import os
 
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
-from config import FINNHUB_API_KEY, GEMINI_API_KEY
+from config_new import FINNHUB_API_KEY, GEMINI_API_KEY
 from ai.prompts import get_sentiment_prompt
 from data.storage import save_sentiment, create_table
 
