@@ -2,8 +2,8 @@ import yfinance as yf
 import sys
 import os
 
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from data.storage import create_table, save_stock
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+from config_new import FINNHUB_API_KEY
 
 TICKERS = ['AAPL', 'MSFT', 'NVDA', 'GOOGL', 'AMZN', 'META', 'TSLA', 'JPM', 'V', 'INTC']
 
@@ -20,12 +20,14 @@ def fetch_stock(ticker):
 
         print(f"{ticker} — Price: {price}, P/E: {pe_ratio}, EPS Growth: {eps_growth}, D/E: {debt_to_equity}, Market Cap: {market_cap}")
 
+        from data.storage import save_stock
         save_stock(ticker, price, pe_ratio, eps_growth, debt_to_equity, market_cap)
 
     except Exception as e:
         print(f"Error fetching {ticker}: {e}")
 
 def fetch_all():
+    from data.storage import create_table
     create_table()
     print("Fetching stock data...\n")
     for ticker in TICKERS:
