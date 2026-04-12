@@ -1,0 +1,8 @@
+venv/
+config.py
+data/stocks.db
+__pycache__/
+*.pyc
+.env
+test.py
+check.py
